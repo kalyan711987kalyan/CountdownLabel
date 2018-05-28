@@ -72,7 +72,7 @@ public class CountdownLabel: LTMorphingLabel {
             }
         }
     }
-    public var timeFormat = "HH:mm:ss"
+    public var timeFormat = "hh mm ss"
     public var thens = [TimeInterval: CountdownExecution]()
     public var countdownAttributedText: CountdownAttributedText! {
         didSet {
@@ -279,16 +279,16 @@ extension CountdownLabel {
             labelText = labelText.replacingOccurrences(of: "dd", with: String.init(format: "%02ld", day))
         }
         if let hour = comp.hour ,let _ = timeFormat.range(of: "hh"){
-            labelText = labelText.replacingOccurrences(of: "hh", with: String.init(format: "%02ld", hour))
+            labelText = labelText.replacingOccurrences(of: "hh", with: String.init(format:"%dh", hour))
         }
         if let hour = comp.hour ,let _ = timeFormat.range(of: "HH"){
-            labelText = labelText.replacingOccurrences(of: "HH", with: String.init(format: "%02ld", hour))
+            labelText = labelText.replacingOccurrences(of: "HH", with: String.init(format: "%02ldh", hour))
         }
         if let minute = comp.minute ,let _ = timeFormat.range(of: "mm"){
-            labelText = labelText.replacingOccurrences(of: "mm", with: String.init(format: "%02ld", minute))
+            labelText = labelText.replacingOccurrences(of: "mm", with: String.init(format: "%02ldm", minute))
         }
         if let second = comp.second ,let _ = timeFormat.range(of: "ss"){
-            labelText = labelText.replacingOccurrences(of: "ss", with: String.init(format: "%02ld", second))
+            labelText = labelText.replacingOccurrences(of: "ss", with: String.init(format: "%02lds", second))
         }
         return labelText
     }
